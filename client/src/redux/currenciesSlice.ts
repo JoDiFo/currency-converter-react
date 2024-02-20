@@ -1,25 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IConvertPair } from "../Types";
+import { ICode, IConvertPair } from "../Types";
 
 const convertPair: IConvertPair = {
   from: "",
   to: "",
 };
 
+const codeList: ICode[] = [];
+
 const initialState = {
   convertPair,
+  codeList,
 };
 
 export const currenciesSlice = createSlice({
   name: "currenciesSlice",
   initialState,
   reducers: {
-    setPair: (state, action) => {
-      state.convertPair.from = action.payload.from;
-      state.convertPair.to = action.payload.to;
+    setFrom: (state, action) => {
+      state.convertPair.from = action.payload;
+    },
+    setTo: (state, action) => {
+      state.convertPair.to = action.payload;
+    },
+    setCodes: (state, action) => {
+      state.codeList = action.payload;
     },
   },
 });
 
-export const { setPair } = currenciesSlice.actions;
+export const { setFrom, setTo, setCodes } = currenciesSlice.actions;
 export default currenciesSlice.reducer;
