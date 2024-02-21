@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import equals from "../assets/equals.svg";
 import { RootState } from "../redux/store";
 import { ResultForm } from ".";
+import { getFullTitle } from "../utils";
 
 function Results() {
   const conversionContext = useSelector(
@@ -16,7 +17,10 @@ function Results() {
     <div className="form-results">
       <ResultForm
         targetCode={conversionContext.base_code}
-        currencyTitle={currenciesContext.convertPair.from}
+        currencyTitle={getFullTitle(
+          currenciesContext.convertPair.from,
+          currenciesContext.codeList
+        )}
         amount={currenciesContext.amount}
         target="from"
       />
@@ -27,7 +31,10 @@ function Results() {
 
       <ResultForm
         targetCode={conversionContext.target_code}
-        currencyTitle={currenciesContext.convertPair.to}
+        currencyTitle={getFullTitle(
+          currenciesContext.convertPair.to,
+          currenciesContext.codeList
+        )}
         amount={conversionContext.conversion_result}
         target="to"
       />
