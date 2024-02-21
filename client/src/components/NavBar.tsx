@@ -1,25 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import convert from "../assets/convert.svg";
 import single from "../assets/single.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function NavBar() {
-  const [isConvert, setIsConvert] = useState(true);
+  const [isConvert, setIsConvert] = useState(false);
   const [isSingle, setIsSingle] = useState(false);
+  const { pathname } = useLocation();
 
-  const handleConvertClick = () => {
-    setIsConvert(true);
-    setIsSingle(false);
-  };
-
-  const handleSingleClick = () => {
-    setIsConvert(false);
-    setIsSingle(true);
-  };
+  useEffect(() => {
+    if (pathname === "/") {
+      setIsConvert(true);
+      setIsSingle(false);
+    } else {
+      setIsConvert(false);
+      setIsSingle(true);
+    }
+  }, [pathname]);
 
   return (
     <div className="tabs">
-      <Link to="/" onClick={handleConvertClick}>
+      <Link to="/">
         <div className={`tab${isConvert ? " active" : ""}`} data-tab="convert">
           <div className="tab-icon">
             <img src={convert} alt="" />
@@ -28,7 +29,7 @@ function NavBar() {
         </div>
       </Link>
 
-      <Link to="/currencies" onClick={handleSingleClick}>
+      <Link to="/currencies">
         <div className={`tab${isSingle ? " active" : ""}`} data-tab="single">
           <div className="tab-icon">
             <img src={single} alt="" />
