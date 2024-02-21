@@ -316,7 +316,6 @@ h1 {
   justify-content: center;
   -moz-column-gap: 15px;
   column-gap: 15px;
-  opacity: 0;
 }
 @media screen and (max-width: 700px) {
   .form-results {

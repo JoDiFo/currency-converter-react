@@ -7,6 +7,7 @@ import SingleCurrencies from "./SingleCurrencies";
 import SelectCurrency from "./SelectCurrency";
 import CurrencyList from "./CurrencyList";
 import InputForm from "./InputForm";
+import ResultForm from "./ResultForm";
 
 export {
   NavBar,
@@ -18,4 +19,5 @@ export {
   SelectCurrency,
   CurrencyList,
   InputForm,
+  ResultForm,
 };
