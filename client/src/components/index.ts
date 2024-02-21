@@ -8,6 +8,7 @@ import SelectCurrency from "./SelectCurrency";
 import CurrencyList from "./CurrencyList";
 import InputForm from "./InputForm";
 import ResultForm from "./ResultForm";
+import ListItem from "./ListItem";
 
 export {
   NavBar,
@@ -20,4 +21,5 @@ export {
   CurrencyList,
   InputForm,
   ResultForm,
+  ListItem,
 };

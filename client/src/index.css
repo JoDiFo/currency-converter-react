@@ -586,7 +586,6 @@ h1 {
   background: linear-gradient(97.46deg, #ff585f 3.28%, #b33263 95.35%);
 }
 .currency-add .select {
-  display: none;
   padding: 11px 14px;
 }
 .currency-add.active .select {
