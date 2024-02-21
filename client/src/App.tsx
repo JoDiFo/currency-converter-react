@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { Converter, NavBar, SingleCurrencies } from "./components";
 import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import { Converter, NavBar, SingleCurrencies } from "./components";
 import { setCodes } from "./redux/currenciesSlice";
 
 function App() {
@@ -25,8 +26,11 @@ function App() {
         <div className="main">
           <div className="wrapper">
             <NavBar />
-            <Converter />
-            <SingleCurrencies />
+
+            <Routes>
+              <Route path="/" element={<Converter />} />
+              <Route path="/currencies" element={<SingleCurrencies />} />
+            </Routes>
           </div>
         </div>
       </div>

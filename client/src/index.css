@@ -26,6 +26,12 @@ input::-webkit-inner-spin-button {
   box-sizing: border-box;
 }
 
+a {
+  font-size: inherit;
+  text-decoration: inherit;
+  color: inherit;
+}
+
 .container {
   width: 1024px;
   margin: 0 auto;
@@ -178,10 +184,10 @@ h1 {
 .tab:hover {
   opacity: 0.8;
 }
-.tab:active {
+.tab.active {
   opacity: 1;
 }
-.tab:active::after {
+.tab.active::after {
   width: 100%;
 }
 
