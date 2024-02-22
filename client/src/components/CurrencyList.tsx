@@ -24,7 +24,7 @@ function CurrencyList() {
 
   useEffect(() => {
     fetchLatest();
-  }, []);
+  }, [currenciesContext.convertPair.from]);
 
   return (
     <div className="currency-wrapper">
