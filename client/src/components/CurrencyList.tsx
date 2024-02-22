@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { ListItem } from ".";
 import { useEffect, useState } from "react";
+import { getFullTitle } from "../utils";
 
 function CurrencyList() {
   const [rates, setRates] = useState();
@@ -33,11 +34,22 @@ function CurrencyList() {
       </div>
 
       <div className="currency-list">
-        {(currenciesContext.selected.length !== 0 && rates) ? (
+        {currenciesContext.convertPair.from ? (
+          <ListItem
+            isBase={true}
+            code={currenciesContext.convertPair.from}
+            fullName={getFullTitle(
+              currenciesContext.convertPair.from,
+              currenciesContext.codeList
+            )}
+            rate={1}
+          />
+        ) : null}
+        {currenciesContext.selected.length !== 0 && rates ? (
           currenciesContext.selected.map((item) => (
             <ListItem
               key={item[0] + item[1]}
-              isBase={item[0] == currenciesContext.convertPair.from}
+              isBase={false}
               code={item[0]}
               fullName={item[1]}
               rate={rates[item[0]]}
