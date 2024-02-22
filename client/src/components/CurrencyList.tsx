@@ -12,10 +12,12 @@ function CurrencyList() {
   );
 
   const fetchLatest = async () => {
+    const url =
+      "http://localhost:5012/api/latest/" +
+      new URLSearchParams({ code: currenciesContext.convertPair.from });
+
     try {
-      const response = await fetch(
-        `https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/latest/${currenciesContext.convertPair.from}`
-      );
+      const response = await fetch(url);
       const data = await response.json();
       setRates(data.conversion_rates);
     } catch (err) {

@@ -16,7 +16,13 @@ function Converter() {
   );
 
   const handleConvert = async () => {
-    const url = "https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883";
+    const url =
+      "http://localhost:5012/api/convert/" +
+      new URLSearchParams({
+        from: currenciesContext.convertPair.from,
+        to: currenciesContext.convertPair.to,
+        amount: currenciesContext.amount.toString(),
+      });
 
     if (
       !currenciesContext.amount ||
@@ -29,9 +35,7 @@ function Converter() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        `${url}/pair/${currenciesContext.convertPair.from}/${currenciesContext.convertPair.to}/${currenciesContext.amount}`
-      );
+      const response = await fetch(url);
       const data: IConvertResponseData = await response.json();
 
       if (data.result === "success") {

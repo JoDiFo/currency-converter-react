@@ -8,7 +8,9 @@ function App() {
   const dispatch = useDispatch();
 
   const fetchCodes = () => {
-    fetch("https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/codes")
+    const url = "http://localhost:5012/api/codes";
+
+    fetch(url)
       .then((res) => res.json())
       .then((data: any) => dispatch(setCodes(data.supported_codes)))
       .catch((err) => console.log(err));
