@@ -10,12 +10,15 @@ interface IProps {
 function SelectForm({ title }: IProps) {
   const dispatch = useDispatch();
 
-  const defaultValue = "Choose currency";
-  const [selected, setSelected] = useState(defaultValue);
-
   const currenciesContext = useSelector(
     (state: RootState) => state.currenciesReducer
   );
+
+  const defaultValue =
+    (title === "From"
+      ? currenciesContext.convertPair.from
+      : currenciesContext.convertPair.to) || "Choose currency";
+  const [selected, setSelected] = useState(defaultValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = e.target.value;

@@ -16,7 +16,6 @@ function CurrencyList() {
         `https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/latest/${currenciesContext.convertPair.from}`
       );
       const data = await response.json();
-      console.log(data);
       setRates(data.conversion_rates);
     } catch (err) {
       console.log(err);
