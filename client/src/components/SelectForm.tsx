@@ -21,41 +21,38 @@ function SelectForm({ title }: IProps) {
   const [selected, setSelected] = useState(defaultValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newValue = e.target.value;
-    setSelected(newValue);
+    const newValue = e.target.value.split(",");
+    setSelected(newValue[0]);
     switch (title) {
       case "From":
-        dispatch(setFrom(newValue));
+        dispatch(setFrom(newValue[0]));
         break;
       case "To":
-        dispatch(setTo(newValue));
+        dispatch(setTo(newValue[0]));
         break;
     }
   };
 
   return (
-    <div className="form-select">
-      <label htmlFor="from">{title}</label>
-      <select
-        className="select"
-        name="from"
-        id="from"
-        value={selected}
-        required
-        onChange={(e) => handleChange(e)}
-      >
-        <option key={1} value={defaultValue}>
-          {defaultValue}
-        </option>
-        {currenciesContext.codeList.length !== 0
-          ? currenciesContext.codeList.map((item) => (
-              <option key={item[1] + item[0]} value={item[0]}>
-                {item[0]}
-              </option>
-            ))
-          : null}
-      </select>
-    </div>
+    <select
+      className="select"
+      name="from"
+      id="from"
+      value={selected}
+      required
+      onChange={(e) => handleChange(e)}
+    >
+      <option key={1} value={defaultValue}>
+        {defaultValue}
+      </option>
+      {currenciesContext.codeList.length !== 0
+        ? currenciesContext.codeList.map((item) => (
+            <option key={item[1] + item[0]} value={item}>
+              {item[0]}
+            </option>
+          ))
+        : null}
+    </select>
   );
 }
 

@@ -51,13 +51,19 @@ function Converter() {
           <InputForm title="Amount" />
 
           <div className="form-selects">
-            <SelectForm title={"From"} />
+            <div className="form-select">
+              <label htmlFor="from">From</label>
+              <SelectForm title={"From"} />
+            </div>
 
             <div className="form-select__icon switch-currencies">
               <img src={arrows} alt="" />
             </div>
 
-            <SelectForm title={"To"} />
+            <div className="form-select">
+              <label htmlFor="from">From</label>
+              <SelectForm title={"To"} />
+            </div>
           </div>
         </div>
 

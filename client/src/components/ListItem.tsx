@@ -1,19 +1,24 @@
 import { useDispatch } from "react-redux";
 import { removeCurrency } from "../redux/currenciesSlice";
+import { useState } from "react";
+import { SelectForm } from ".";
 
 interface IProps {
   isBase: boolean;
   code: string;
   fullName: string;
-  rate: number
+  rate: number;
 }
 
 function ListItem({ isBase, code, fullName, rate }: IProps) {
   const dispatch = useDispatch();
   const action = isBase ? "change" : "remove";
 
+  const [showSelect, setShowSelect] = useState(false);
+
   const handleAction = (code: string) => {
     if (action == "change") {
+      setShowSelect(true);
     } else {
       dispatch(removeCurrency(code));
     }
@@ -31,12 +36,16 @@ function ListItem({ isBase, code, fullName, rate }: IProps) {
 
       <div className="currency-amount">{rate.toFixed(2)}</div>
       <div className="currency-action">
-        <button
-          className={`currency-${action} currency-button`}
-          onClick={() => handleAction(code)}
-        >
-          {action}
-        </button>
+        {showSelect ? (
+          <SelectForm title="From" />
+        ) : (
+          <button
+            className={`currency-${action} currency-button`}
+            onClick={() => handleAction(code)}
+          >
+            {action}
+          </button>
+        )}
       </div>
     </div>
   );
