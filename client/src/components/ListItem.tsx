@@ -5,20 +5,19 @@ interface IProps {
   isBase: boolean;
   code: string;
   fullName: string;
-  rate: number;
+  rate: number
 }
 
 function ListItem({ isBase, code, fullName, rate }: IProps) {
-    const dispatch = useDispatch();
-    const action = isBase ? "change" : "remove";
+  const dispatch = useDispatch();
+  const action = isBase ? "change" : "remove";
 
-    const handleAction = (code: string) => {
-        if (action == "change") {
-
-        } else {
-            dispatch(removeCurrency(code))
-        }
+  const handleAction = (code: string) => {
+    if (action == "change") {
+    } else {
+      dispatch(removeCurrency(code));
     }
+  };
 
   return (
     <div
