@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useState } from "react";
 import { IConvertResponseData } from "../Types";
-import { setData } from "../redux/conversionSlice";
+import { clearData, setData } from "../redux/conversionSlice";
+import { swapCurrencies } from "../redux/currenciesSlice";
 
 function Converter() {
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const currenciesContext = useSelector(
+  const {convertPair, amount} = useSelector(
     (state: RootState) => state.currenciesReducer
   );
 
@@ -19,15 +20,15 @@ function Converter() {
     const url =
       "http://localhost:5012/api/convert/" +
       new URLSearchParams({
-        from: currenciesContext.convertPair.from,
-        to: currenciesContext.convertPair.to,
-        amount: currenciesContext.amount.toString(),
+        from: convertPair.from,
+        to: convertPair.to,
+        amount: amount.toString(),
       });
 
     if (
-      !currenciesContext.amount ||
-      !currenciesContext.convertPair.from ||
-      !currenciesContext.convertPair.to
+      !amount ||
+      !convertPair.from ||
+      !convertPair.to
     ) {
       return;
     }
@@ -60,12 +61,19 @@ function Converter() {
               <SelectForm title={"From"} />
             </div>
 
-            <div className="form-select__icon switch-currencies">
+            <div
+              className="form-select__icon switch-currencies"
+              onClick={() => {
+                dispatch(swapCurrencies())
+                dispatch(clearData())
+                setIsLoading(true)
+              }}
+            >
               <img src={arrows} alt="" />
             </div>
 
             <div className="form-select">
-              <label htmlFor="from">From</label>
+              <label htmlFor="from">To</label>
               <SelectForm title={"To"} />
             </div>
           </div>

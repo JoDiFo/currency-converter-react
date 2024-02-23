@@ -21,8 +21,16 @@ export const conversionSlice = createSlice({
       state.conversion_result = action.payload.conversion_result;
       state.time_last_update_utc = action.payload.time_last_update_utc;
     },
+    clearData: (state) => {
+      state.base_code = initialState.base_code;
+      state.target_code = initialState.target_code;
+      state.conversion_rate = initialState.conversion_rate;
+      state.conversion_result = initialState.conversion_result;
+      state.time_last_update_utc = initialState.time_last_update_utc;
+      state.result = initialState.result;
+    },
   },
 });
 
-export const { setData } = conversionSlice.actions;
+export const { setData, clearData } = conversionSlice.actions;
 export default conversionSlice.reducer;
