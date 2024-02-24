@@ -2,8 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 import convert from "../assets/convert.svg";
 import single from "../assets/single.svg";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function NavBar() {
+  const { t } = useTranslation();
+
   const [isConvert, setIsConvert] = useState(false);
   const [isSingle, setIsSingle] = useState(false);
   const { pathname } = useLocation();
@@ -25,7 +28,7 @@ function NavBar() {
           <div className="tab-icon">
             <img src={convert} alt="" />
           </div>
-          <div className="tab-title">Convert</div>
+          <div className="tab-title">{t("Convert Tab")}</div>
         </div>
       </Link>
 
@@ -34,7 +37,7 @@ function NavBar() {
           <div className="tab-icon">
             <img src={single} alt="" />
           </div>
-          <div className="tab-title">Single</div>
+          <div className="tab-title">{t("Single Tab")}</div>
         </div>
       </Link>
     </div>

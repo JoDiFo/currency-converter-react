@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useState } from "react";
 import { setFrom, setTo } from "../redux/currenciesSlice";
+import {useTranslation} from 'react-i18next'
 
 interface IProps {
   title: "From" | "To";
@@ -9,6 +10,7 @@ interface IProps {
 
 function SelectForm({ title }: IProps) {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
 
   const currenciesContext = useSelector(
     (state: RootState) => state.currenciesReducer
@@ -17,7 +19,7 @@ function SelectForm({ title }: IProps) {
   const defaultValue =
     (title === "From"
       ? currenciesContext.convertPair.from
-      : currenciesContext.convertPair.to) || "Choose currency";
+      : currenciesContext.convertPair.to) || t("Choose Currency");
   const [selected, setSelected] = useState(defaultValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

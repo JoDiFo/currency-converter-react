@@ -6,13 +6,15 @@ import { useState } from "react";
 import { IConvertResponseData } from "../Types";
 import { clearData, setData } from "../redux/conversionSlice";
 import { swapCurrencies } from "../redux/currenciesSlice";
+import { useTranslation } from "react-i18next";
 
 function Converter() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const {convertPair, amount} = useSelector(
+  const { convertPair, amount } = useSelector(
     (state: RootState) => state.currenciesReducer
   );
 
@@ -25,11 +27,7 @@ function Converter() {
         amount: amount.toString(),
       });
 
-    if (
-      !amount ||
-      !convertPair.from ||
-      !convertPair.to
-    ) {
+    if (!amount || !convertPair.from || !convertPair.to) {
       return;
     }
 
@@ -53,27 +51,27 @@ function Converter() {
     <div className="content show" data-child="convert">
       <form className="form">
         <div className="form-inputs">
-          <InputForm title="Amount" />
+          <InputForm title={t("Amount Title")} />
 
           <div className="form-selects">
             <div className="form-select">
-              <label htmlFor="from">From</label>
+              <label htmlFor="from">{t("From Title")}</label>
               <SelectForm title={"From"} />
             </div>
 
             <div
               className="form-select__icon switch-currencies"
               onClick={() => {
-                dispatch(swapCurrencies())
-                dispatch(clearData())
-                setIsLoading(true)
+                dispatch(swapCurrencies());
+                dispatch(clearData());
+                setIsLoading(true);
               }}
             >
               <img src={arrows} alt="" />
             </div>
 
             <div className="form-select">
-              <label htmlFor="from">To</label>
+              <label htmlFor="from">{t("To Title")}</label>
               <SelectForm title={"To"} />
             </div>
           </div>
@@ -89,7 +87,7 @@ function Converter() {
           {!isLoading ? <Results /> : null}
 
           <button type="button" className="form-submit" onClick={handleConvert}>
-            Convert
+            {t("Convert Button")}
           </button>
         </div>
 

@@ -3,8 +3,11 @@ import { RootState } from "../redux/store";
 import { ListItem } from ".";
 import { useEffect, useState } from "react";
 import { getFullTitle } from "../utils";
+import { useTranslation } from "react-i18next";
 
 function CurrencyList() {
+  const { t } = useTranslation();
+
   const [rates, setRates] = useState();
 
   const currenciesContext = useSelector(
@@ -58,7 +61,7 @@ function CurrencyList() {
             />
           ))
         ) : (
-          <h3>No Currencies Selected</h3>
+          <h3>{t("None Selected")}</h3>
         )}
       </div>
     </div>
