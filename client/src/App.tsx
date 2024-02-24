@@ -15,7 +15,7 @@ function App() {
   const { t } = useTranslation();
 
   const fetchCodes = () => {
-    const url = "http://localhost:5012/api/codes";
+    const url = "https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/codes";
 
     fetch(url)
       .then((res) => res.json())

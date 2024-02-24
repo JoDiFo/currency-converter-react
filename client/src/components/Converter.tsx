@@ -19,13 +19,7 @@ function Converter() {
   );
 
   const handleConvert = async () => {
-    const url =
-      "http://localhost:5012/api/convert/" +
-      new URLSearchParams({
-        from: convertPair.from,
-        to: convertPair.to,
-        amount: amount.toString(),
-      });
+    const url = `https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/pair/${convertPair.from}/${convertPair.to}/${amount}`;
 
     if (!amount || !convertPair.from || !convertPair.to) {
       return;
