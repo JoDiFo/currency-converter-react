@@ -22,7 +22,17 @@ const resources = {
   },
   ru: {
     translation: {
-      "Welcome to React": "Bienvenue à React et react-i18next",
+      Title: "Конвертируй с использованием текущего курса инностранных валют",
+      "Convert Tab": "Перевести",
+      "Single Tab": "Одна валюта",
+      "Amount Title": "Сумма",
+      "From Title": "Главная валюта",
+      "To Title": "Валюта для перевода",
+      "Convert Button": "Конвертировать",
+      "None Selected": "Не выбрано ни одной валюты",
+      "Add Currency Button": "Добавить валюту",
+      "Choose Currency": "Выберите вылюту",
+      "Last Updated": "Последнее обновление",
     },
   },
 };
