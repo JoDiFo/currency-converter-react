@@ -285,6 +285,7 @@ h1 {
   opacity: 1;
 }
 .form-info {
+  padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -338,7 +339,7 @@ h1 {
   opacity: 1;
 }
 .form-result__equals {
-  background: #2b2440;
+  background: #231d34;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -545,10 +546,17 @@ h1 {
 }
 .currency-list {
   margin-top: 30px;
+  padding: 0px 20px;
   display: flex;
   flex-direction: column;
   row-gap: 8px;
 }
+
+.currency-list h3 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
 .currency-button {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
@@ -580,7 +588,7 @@ h1 {
   color: #fff;
   padding: 12px 30px;
   cursor: pointer;
-  margin-left: auto;
+  margin: 0px 20px;
 }
 .currency-add__button:hover {
   background: linear-gradient(97.46deg, #ff585f 3.28%, #b33263 95.35%);

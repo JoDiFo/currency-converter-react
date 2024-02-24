@@ -28,6 +28,11 @@ export const currenciesSlice = createSlice({
     setTo: (state, action) => {
       state.convertPair.to = action.payload;
     },
+    swapCurrencies: (state) => {
+      const temp = state.convertPair.from;
+      state.convertPair.from = state.convertPair.to;
+      state.convertPair.to = temp;
+    },
     setCodes: (state, action) => {
       state.codeList = action.payload;
     },
@@ -35,11 +40,13 @@ export const currenciesSlice = createSlice({
       state.amount = action.payload;
     },
     addCurrency: (state, action) => {
-      const newItems = [...state.selected, action.payload]
+      const newItems = [...state.selected, action.payload];
       state.selected = newItems;
     },
     removeCurrency: (state, action) => {
-      const found = state.selected.find((item) => item.includes(action.payload))
+      const found = state.selected.find((item) =>
+        item.includes(action.payload)
+      );
       if (!found) {
         return;
       }
@@ -54,6 +61,13 @@ export const currenciesSlice = createSlice({
   },
 });
 
-export const { setFrom, setTo, setCodes, setAmount, addCurrency, removeCurrency } =
-  currenciesSlice.actions;
+export const {
+  setFrom,
+  setTo,
+  swapCurrencies,
+  setCodes,
+  setAmount,
+  addCurrency,
+  removeCurrency,
+} = currenciesSlice.actions;
 export default currenciesSlice.reducer;

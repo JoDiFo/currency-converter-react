@@ -9,6 +9,7 @@ import CurrencyList from "./CurrencyList";
 import InputForm from "./InputForm";
 import ResultForm from "./ResultForm";
 import ListItem from "./ListItem";
+import LanguageSelector from "./LanguageSelector";
 
 export {
   NavBar,
@@ -22,4 +23,5 @@ export {
   InputForm,
   ResultForm,
   ListItem,
+  LanguageSelector,
 };

@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { addCurrency } from "../redux/currenciesSlice";
+import { useTranslation } from "react-i18next";
 
 function SelectCurrency() {
   const dispatch = useDispatch();
-  const defaultValue = "Select currency";
+  const { t } = useTranslation();
+  const defaultValue = t("Choose Currency");
+
   const [showSelect, setShowSelect] = useState(false);
   const [selected, setSelected] = useState(defaultValue);
 
@@ -21,13 +24,13 @@ function SelectCurrency() {
     const newValue = e.target.value.split(",");
     setSelected(newValue[0]);
     setShowSelect(false);
-    dispatch(addCurrency(newValue))
+    dispatch(addCurrency(newValue));
   };
 
   return (
     <div className="currency-add">
       <button className="currency-add__button" onClick={handleAddClick}>
-        Add currency
+        {t("Add Currency Button")}
       </button>
 
       {showSelect ? (

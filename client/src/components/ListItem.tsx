@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { removeCurrency } from "../redux/currenciesSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectForm } from ".";
 
 interface IProps {
@@ -23,6 +23,10 @@ function ListItem({ isBase, code, fullName, rate }: IProps) {
       dispatch(removeCurrency(code));
     }
   };
+
+  useEffect(() => {
+    setShowSelect(false)
+  }, [code])
 
   return (
     <div

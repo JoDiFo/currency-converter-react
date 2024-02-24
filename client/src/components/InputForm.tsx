@@ -7,7 +7,7 @@ interface IProps {
 
 function InputForm({ title }: IProps) {
   const dispatch = useDispatch();
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setAmount(Number(e.target.value)));
   };

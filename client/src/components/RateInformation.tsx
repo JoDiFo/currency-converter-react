@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { formatToCurrency } from "../utils";
+import { useTranslation } from "react-i18next";
 
 function RateInformation() {
+  const { t } = useTranslation();
   const conversionContext = useSelector(
     (state: RootState) => state.conversionReducer
   );
@@ -19,7 +21,7 @@ function RateInformation() {
     <div className="rate-information">
       <div className="rate-conversion">{innerText}</div>
       <div className="rate-last">
-        Last updated {conversionContext.time_last_update_utc}
+        {t("Last updated")} {conversionContext.time_last_update_utc}
       </div>
     </div>
   );
