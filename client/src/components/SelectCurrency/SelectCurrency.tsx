@@ -1,5 +1,5 @@
 import { useSelector, shallowEqual } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "../../redux/store";
 import { memo } from "react";
 
 interface IProps {
@@ -7,7 +7,7 @@ interface IProps {
   handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-function SelectForm({ defaultValue, handleChange }: IProps) {
+function SelectCurrency({ defaultValue, handleChange }: IProps) {
   const codeList = useSelector(
     (state: RootState) => state.currenciesReducer.codeList,
     shallowEqual
@@ -29,4 +29,4 @@ function SelectForm({ defaultValue, handleChange }: IProps) {
   );
 }
 
-export default memo(SelectForm);
+export default memo(SelectCurrency);

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import convert from "../assets/convert.svg";
-import single from "../assets/single.svg";
+import convert from "../../assets/convert.svg";
+import single from "../../assets/single.svg";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 

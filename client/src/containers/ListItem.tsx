@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { removeCurrency, setFrom } from "../redux/currenciesSlice";
 import { useCallback, useEffect, useState } from "react";
-import { SelectForm } from ".";
+import { SelectCurrency } from "../components";
 import { useTranslation } from "react-i18next";
 
 interface IProps {
@@ -51,7 +51,7 @@ function ListItem({ isBase, code, fullName, rate }: IProps) {
       <div className="currency-amount">{rate.toFixed(2)}</div>
       <div className="currency-action">
         {showSelect ? (
-          <SelectForm
+          <SelectCurrency
             defaultValue={t("Choose Currency")}
             handleChange={handleFromChange}
           />

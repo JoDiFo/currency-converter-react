@@ -1,12 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import {
-  Converter,
-  LanguageSelector,
-  NavBar,
-  SingleCurrencies,
-} from "./components";
+import { LanguageSelector, NavBar } from "./components";
+import { Converter, SingleCurrencies } from "./pages";
 import { setCodes } from "./redux/currenciesSlice";
 import { useTranslation } from "react-i18next";
 
@@ -15,7 +11,8 @@ function App() {
   const { t } = useTranslation();
 
   const fetchCodes = () => {
-    const url = "https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/codes";
+    const url =
+      "https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/codes";
 
     fetch(url)
       .then((res) => res.json())

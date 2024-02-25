@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import { formatToCurrency } from "../utils";
+import { RootState } from "../../redux/store";
+import { formatToCurrency } from "../../utils";
 import { useTranslation } from "react-i18next";
 
 function RateInformation() {

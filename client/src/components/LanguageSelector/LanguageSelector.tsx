@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../LanguageSelector.css";
+import "./LanguageSelector.css";
 import i18next from "i18next";
 
 function LanguageSelector() {

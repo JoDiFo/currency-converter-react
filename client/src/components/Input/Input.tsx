@@ -1,20 +1,19 @@
 import { memo } from "react";
 
 interface IProps {
+  placeholder: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function InputForm({ handleChange }: IProps) {
+function Input({ placeholder, handleChange }: IProps) {
   return (
     <input
       type="number"
-      name="amount"
-      id="amount"
       required
-      placeholder="1.00"
+      placeholder={placeholder}
       onChange={(e) => handleChange(e)}
     />
   );
 }
 
-export default memo(InputForm);
+export default memo(Input);

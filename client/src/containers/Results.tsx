@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import equals from "../assets/equals.svg";
 import { RootState } from "../redux/store";
-import { ResultForm } from ".";
+import { ResultForm } from "../components";
 import { getFullTitle } from "../utils";
 
 function Results() {

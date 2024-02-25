@@ -1,5 +1,6 @@
 import arrows from "../assets/arrows.png";
-import { SelectForm, Results, RateInformation, InputForm } from ".";
+import { SelectCurrency, RateInformation, Input } from "../components";
+import { Results } from "../containers";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useCallback, useState } from "react";
@@ -75,13 +76,13 @@ function Converter() {
         <div className="form-inputs">
           <div className="form-group">
             <label htmlFor="amount">{t("Amount Title")}</label>
-            <InputForm handleChange={handleInputChange} />
+            <Input placeholder="1.00" handleChange={handleInputChange} />
           </div>
 
           <div className="form-selects">
             <div className="form-select">
               <label htmlFor="from">{t("From Title")}</label>
-              <SelectForm
+              <SelectCurrency
                 defaultValue={convertPair.from || t("Choose Currency")}
                 handleChange={handleFromChange}
               />
@@ -100,7 +101,7 @@ function Converter() {
 
             <div className="form-select">
               <label htmlFor="from">{t("To Title")}</label>
-              <SelectForm
+              <SelectCurrency
                 defaultValue={convertPair.to || t("Choose Currency")}
                 handleChange={handleToChange}
               />

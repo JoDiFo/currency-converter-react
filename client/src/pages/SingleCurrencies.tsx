@@ -1,10 +1,10 @@
-import { CurrencyList, SelectCurrency } from ".";
+import { CurrencyList, AddCurrency } from "../containers";
 
 function Single() {
   return (
     <div className="content" data-child="single">
       <CurrencyList />
-      <SelectCurrency />
+      <AddCurrency />
     </div>
   );
 }
