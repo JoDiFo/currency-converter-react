@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
-import { removeCurrency } from "../redux/currenciesSlice";
-import { useEffect, useState } from "react";
+import { removeCurrency, setFrom } from "../redux/currenciesSlice";
+import { useCallback, useEffect, useState } from "react";
 import { SelectForm } from ".";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isBase: boolean;
@@ -12,6 +13,7 @@ interface IProps {
 
 function ListItem({ isBase, code, fullName, rate }: IProps) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const action = isBase ? "change" : "remove";
 
   const [showSelect, setShowSelect] = useState(false);
@@ -25,8 +27,16 @@ function ListItem({ isBase, code, fullName, rate }: IProps) {
   };
 
   useEffect(() => {
-    setShowSelect(false)
-  }, [code])
+    setShowSelect(false);
+  }, [code]);
+
+  const handleFromChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const newValue = e.target.value.split(",");
+      dispatch(setFrom(newValue[0]));
+    },
+    []
+  );
 
   return (
     <div
@@ -41,7 +51,10 @@ function ListItem({ isBase, code, fullName, rate }: IProps) {
       <div className="currency-amount">{rate.toFixed(2)}</div>
       <div className="currency-action">
         {showSelect ? (
-          <SelectForm title="From" />
+          <SelectForm
+            defaultValue={t("Choose Currency")}
+            handleChange={handleFromChange}
+          />
         ) : (
           <button
             className={`currency-${action} currency-button`}

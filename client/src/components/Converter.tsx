@@ -2,10 +2,15 @@ import arrows from "../assets/arrows.png";
 import { SelectForm, Results, RateInformation, InputForm } from ".";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { IConvertResponseData } from "../Types";
 import { clearData, setData } from "../redux/conversionSlice";
-import { swapCurrencies } from "../redux/currenciesSlice";
+import {
+  setAmount,
+  setFrom,
+  setTo,
+  swapCurrencies,
+} from "../redux/currenciesSlice";
 import { useTranslation } from "react-i18next";
 
 function Converter() {
@@ -41,16 +46,45 @@ function Converter() {
     }
   };
 
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(setAmount(Number(e.target.value)));
+    },
+    []
+  );
+
+  const handleFromChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const newValue = e.target.value.split(",");
+      dispatch(setFrom(newValue[0]));
+    },
+    [convertPair.from]
+  );
+
+  const handleToChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const newValue = e.target.value.split(",");
+      dispatch(setTo(newValue[0]));
+    },
+    [convertPair.to]
+  );
+
   return (
     <div className="content show" data-child="convert">
       <form className="form">
         <div className="form-inputs">
-          <InputForm title={t("Amount Title")} />
+          <div className="form-group">
+            <label htmlFor="amount">{t("Amount Title")}</label>
+            <InputForm handleChange={handleInputChange} />
+          </div>
 
           <div className="form-selects">
             <div className="form-select">
               <label htmlFor="from">{t("From Title")}</label>
-              <SelectForm title={"From"} />
+              <SelectForm
+                defaultValue={convertPair.from || t("Choose Currency")}
+                handleChange={handleFromChange}
+              />
             </div>
 
             <div
@@ -66,7 +100,10 @@ function Converter() {
 
             <div className="form-select">
               <label htmlFor="from">{t("To Title")}</label>
-              <SelectForm title={"To"} />
+              <SelectForm
+                defaultValue={convertPair.to || t("Choose Currency")}
+                handleChange={handleToChange}
+              />
             </div>
           </div>
         </div>
