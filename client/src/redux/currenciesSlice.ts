@@ -29,9 +29,11 @@ export const currenciesSlice = createSlice({
       state.convertPair.to = action.payload;
     },
     swapCurrencies: (state) => {
-      const temp = state.convertPair.from;
-      state.convertPair.from = state.convertPair.to;
-      state.convertPair.to = temp;
+      const temp: IConvertPair = {
+        from: state.convertPair.to,
+        to: state.convertPair.from,
+      };
+      state.convertPair = temp;
     },
     setCodes: (state, action) => {
       state.codeList = action.payload;

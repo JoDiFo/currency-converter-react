@@ -14,7 +14,7 @@ function SelectCurrency({ defaultValue, handleChange }: IProps) {
   );
 
   return (
-    <select className="select" required onChange={(e) => handleChange(e)}>
+    <select className="select" required value={defaultValue} onChange={(e) => handleChange(e)}>
       <option key={1} value={defaultValue}>
         {defaultValue}
       </option>

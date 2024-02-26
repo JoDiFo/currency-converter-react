@@ -70,6 +70,12 @@ function Converter() {
     [convertPair.to]
   );
 
+  const handleSwap = () => {
+    dispatch(swapCurrencies());
+    dispatch(clearData());
+    setIsLoading(true);
+  };
+
   return (
     <div className="content show" data-child="convert">
       <form className="form">
@@ -90,11 +96,7 @@ function Converter() {
 
             <div
               className="form-select__icon switch-currencies"
-              onClick={() => {
-                dispatch(swapCurrencies());
-                dispatch(clearData());
-                setIsLoading(true);
-              }}
+              onClick={handleSwap}
             >
               <img src={arrows} alt="" />
             </div>
