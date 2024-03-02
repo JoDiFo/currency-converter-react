@@ -18,6 +18,8 @@ const resources = {
       "Add Currency Button": "Add currency",
       "Choose Currency": "Choose currency",
       "Last Updated": "Last updated",
+      Change: "change",
+      Remove: "remove",
     },
   },
   ru: {
@@ -33,6 +35,8 @@ const resources = {
       "Add Currency Button": "Добавить валюту",
       "Choose Currency": "Выберите вылюту",
       "Last Updated": "Последнее обновление",
+      Change: "изменить",
+      Remove: "удалить",
     },
   },
 };

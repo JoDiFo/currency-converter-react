@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { removeCurrency } from "../redux/currenciesSlice";
 import { useEffect, useState } from "react";
 import { SelectForm } from ".";
+import {useTranslation} from 'react-i18next'
 
 interface IProps {
   isBase: boolean;
@@ -12,7 +13,8 @@ interface IProps {
 
 function ListItem({ isBase, code, fullName, rate }: IProps) {
   const dispatch = useDispatch();
-  const action = isBase ? "change" : "remove";
+  const {t} = useTranslation();
+  const action = isBase ? t("Change") : t("Remove");
 
   const [showSelect, setShowSelect] = useState(false);
 
