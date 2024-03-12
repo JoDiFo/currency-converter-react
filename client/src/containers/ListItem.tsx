@@ -60,7 +60,7 @@ function ListItem({ isBase, code, fullName, rate }: IProps) {
             className={`currency-${action} currency-button`}
             onClick={() => handleAction(code)}
           >
-            {action}
+            {t(action)}
           </button>
         )}
       </div>
