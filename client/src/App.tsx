@@ -1,28 +1,29 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { LanguageSelector, NavBar } from "./components";
 import { Converter, SingleCurrencies } from "./pages";
 import { setCodes } from "./redux/currenciesSlice";
 import { useTranslation } from "react-i18next";
+import { ISupportedCodes } from "./Types";
 
 function App() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const fetchCodes = () => {
+  const fetchCodes = useCallback(() => {
     const url =
       "https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/codes";
 
     fetch(url)
       .then((res) => res.json())
-      .then((data: any) => dispatch(setCodes(data.supported_codes)))
+      .then((data: ISupportedCodes) => dispatch(setCodes(data.supported_codes)))
       .catch((err) => console.log(err));
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     fetchCodes();
-  }, []);
+  }, [fetchCodes]);
 
   return (
     <main>

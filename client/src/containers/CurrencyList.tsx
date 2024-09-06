@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { ListItem } from ".";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getFullTitle } from "../utils";
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +14,7 @@ function CurrencyList() {
     (state: RootState) => state.currenciesReducer
   );
 
-  const fetchLatest = async () => {
+  const fetchLatest = useCallback(async () => {
     const url = `https://v6.exchangerate-api.com/v6/b9a59150bb14d420c71e9883/latest/${currenciesContext.convertPair.from}`;
 
     try {
@@ -24,11 +24,11 @@ function CurrencyList() {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [currenciesContext.convertPair.from]);
 
   useEffect(() => {
     fetchLatest();
-  }, [currenciesContext.convertPair.from]);
+  }, [currenciesContext.convertPair.from, fetchLatest]);
 
   return (
     <div className="currency-wrapper">

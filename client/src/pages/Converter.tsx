@@ -51,7 +51,7 @@ function Converter() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(setAmount(Number(e.target.value)));
     },
-    []
+    [dispatch]
   );
 
   const handleFromChange = useCallback(
@@ -59,7 +59,7 @@ function Converter() {
       const newValue = e.target.value.split(",");
       dispatch(setFrom(newValue[0]));
     },
-    [convertPair.from]
+    [dispatch]
   );
 
   const handleToChange = useCallback(
@@ -67,7 +67,7 @@ function Converter() {
       const newValue = e.target.value.split(",");
       dispatch(setTo(newValue[0]));
     },
-    [convertPair.to]
+    [dispatch]
   );
 
   const handleSwap = () => {

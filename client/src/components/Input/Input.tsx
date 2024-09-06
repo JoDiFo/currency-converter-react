@@ -5,7 +5,7 @@ interface IProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({ placeholder, handleChange }: IProps) {
+export default memo(function Input({ placeholder, handleChange }: IProps) {
   return (
     <input
       type="number"
@@ -14,6 +14,4 @@ function Input({ placeholder, handleChange }: IProps) {
       onChange={(e) => handleChange(e)}
     />
   );
-}
-
-export default memo(Input);
+});

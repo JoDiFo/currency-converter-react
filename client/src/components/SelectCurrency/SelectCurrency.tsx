@@ -7,14 +7,22 @@ interface IProps {
   handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-function SelectCurrency({ defaultValue, handleChange }: IProps) {
+export default memo(function SelectCurrency({
+  defaultValue,
+  handleChange,
+}: IProps) {
   const codeList = useSelector(
     (state: RootState) => state.currenciesReducer.codeList,
     shallowEqual
   );
 
   return (
-    <select className="select" required value={defaultValue} onChange={(e) => handleChange(e)}>
+    <select
+      className="select"
+      required
+      value={defaultValue}
+      onChange={(e) => handleChange(e)}
+    >
       <option key={1} value={defaultValue}>
         {defaultValue}
       </option>
@@ -27,6 +35,4 @@ function SelectCurrency({ defaultValue, handleChange }: IProps) {
         : null}
     </select>
   );
-}
-
-export default memo(SelectCurrency);
+});

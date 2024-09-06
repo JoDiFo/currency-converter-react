@@ -13,3 +13,7 @@ export interface IConvertResponseData {
   time_last_update_utc: string;
   result: string;
 }
+
+export interface ISupportedCodes {
+  supported_codes: ICode[];
+}
